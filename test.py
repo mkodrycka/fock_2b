@@ -15,11 +15,10 @@ __date__ = "2018-02-20"
 import numpy as np
 import os
 import sys
-from helper_test import *
 import psi4
-
-sys.path.append('/theoryfs2/ds/monika_f12/jk_test')
-sys.path.append('/theoryfs2/ds/monika_f12/jk_test/basis')
+sys.path.append('/home/mok0005/Git/psi4_build_jk_last_version/jk_test/jk_test/fock_2b')
+from helper_test import *
+sys.path.append('/home/mok0005/Git/psi4_build_jk_last_version/jk_test/jk_test/fock_2b/basis')
 # Memory for Psi4 in GB
 psi4.set_memory('20 GB')
 psi4.core.set_output_file('output.dat', True)
@@ -67,6 +66,7 @@ else:
 sapt.print_basis_sets()
 
 obs = sapt.get_size()
+print("TYPE: ", type(obs))
 nocc_A = obs['a']
 nocc_B = obs['b']
 nvir_A = obs['r']

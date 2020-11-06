@@ -6,7 +6,7 @@ from numpy import linalg as LA
 
 class helper_SAPT(object):
 
-    def __init__(self,dimer,memory=18,algorithm='MO',reference='RHF',ri_basis=None,jk_basis=None,gamma=1.0):
+    def __init__(self, dimer, memory=18, algorithm='MO', reference='RHF', ri_basis=None, jk_basis=None, gamma=1.0):
         """
         Initializes the helper_SAPT object.
 
@@ -23,13 +23,9 @@ class helper_SAPT(object):
             The basis set to be used for RI.
         jk_basis: string, optional
             The basis set to be used for JKFIT.
-        gamma : {float, 2}, optional
+        gamma : {float, 1.0}, optional
             Exponent for Slater-type frozen geminal.
-            
-        Returns:
-        ------
-        ret : helper_SAPT
-        """
+        """     
         
         if ri_basis == None:
             raise Exception("You did not specify RI basis!!")
@@ -208,7 +204,6 @@ class helper_SAPT(object):
                         'q': self.conv,
                        }
 
-
     def get_size(self):
         """
         Obtains orbital sizes.
@@ -220,7 +215,6 @@ class helper_SAPT(object):
         """
 
         return self.sizes
-
 
     def get_Cxi_A_Cxj_B(self, dimer):
         """
@@ -273,7 +267,6 @@ class helper_SAPT(object):
 
         return Cxi_A, Cxj_B
 
-
     def sort_bf_in_Jxx_Kxx(self, Jxx, Kxx):
         """
         This is the hack for copmute_jk.
@@ -295,7 +288,7 @@ class helper_SAPT(object):
         Kxx_sorted2 : ndarray
             K matrix in the AO+RI basis with sorted functions. 
         """
-
+        
         Jxx_sorted = np.zeros((self.naori, self.naori))
         Kxx_sorted = np.zeros((self.naori, self.naori))
 
@@ -372,7 +365,7 @@ class helper_SAPT(object):
 
     def print_basis_sets(self):
         """
-        Prints basis stes utilised for F12 calculations.
+        Prints basis stes utilized for F12 calculations.
         """
 
         print("\nBasis sets used for F12 calculations")
@@ -400,7 +393,6 @@ class helper_SAPT(object):
 
         self.jk_aori.set_memory(int(self.memory * 1e9))
         self.jk_aori.initialize()
-
 
         return compute_jk(self.jk_aori, C_left, C_right)
 
@@ -607,7 +599,6 @@ class sapt_timer(object):
     def stop(self):
         t = time.time() - self.start
         print('...%s took a total of % .2f seconds.' % (self.name, t))
-
 
 def sapt_printer(line, value):
     spacer = ' ' * (20 - len(line))
