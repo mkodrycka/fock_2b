@@ -1,5 +1,4 @@
 # Fock_2b
-==========
 This repository contains:
 - `test.py`: a simple script to compute Coulomb (J) and Exchange (K) matrices in mixed bases.
 - `helper_test.py`: A collection of helper classes and functions for SAPT.
